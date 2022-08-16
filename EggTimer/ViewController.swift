@@ -16,29 +16,24 @@ class ViewController: UIViewController {
     @IBOutlet var headerLabel: UILabel!
     var player: AVAudioPlayer?
     var remainedTime = 0
-    let eggTimes: [String : Int] = ["Soft" : 30, "Medium" : 480, "Hard" : 720 ]
+    let eggTimes: [String : Int] = ["Soft" : 300 , "Medium" : 480, "Hard" : 720 ]
     var timer:  Timer?
-    var timePassed = 0{
-        
-            didSet{
-                headerLabel.text = "Cooking..."
-            }
-        }
+    var timePassed = 0
     
         
     @IBAction func hardnessSelected(_ sender: UIButton) {
        
         player = try? AVAudioPlayer(contentsOf: urlTimer)
-        
-        
+        progressView.progress = 0
         timer?.invalidate()
         timePassed = 0
-        let hardness = sender.currentTitle!
-        remainedTime = eggTimes[hardness]!
-        print(remainedTime)
-       timer = Timer.scheduledTimer(timeInterval: 1.0 , target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
-         
         
+   
+        let hardness = sender.currentTitle!
+        headerLabel.text = hardness
+        remainedTime = eggTimes[hardness]!
+       
+       timer = Timer.scheduledTimer(timeInterval: 1.0 , target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
     }
     
     
@@ -47,16 +42,15 @@ class ViewController: UIViewController {
             
             let percentageProgress = Float(timePassed) / Float(remainedTime)
             progressView.progress = percentageProgress
-            headerLabel.text = "\(remainedTime) seconds remained."
-            print("\(timePassed) seconds.")
+            print("\(percentageProgress)")
             timePassed += 1
             player?.play()
             
         }
         else {
+            player?.stop()
             timer?.invalidate()
             headerLabel.text = "DONE!"
-            player?.stop()
             player = try? AVAudioPlayer(contentsOf: urlDing)
             player?.play()
         }

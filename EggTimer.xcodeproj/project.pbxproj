@@ -46,8 +46,6 @@
 		1185CFA728ABD11D00B4865B /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				1185CFA328ABC84800B4865B /* CLOCKTick_Tic tac mechanical alarm clock 2 (ID 2655)_BSB.wav */,
-				1185CFA428ABC84800B4865B /* microwave-timer-bright-design-microwave-oven-ping-timer-117077.mp3 */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -80,6 +78,8 @@
 				ADF037F622D332AD00A69E9A /* Assets.xcassets */,
 				ADF037F822D332AD00A69E9A /* LaunchScreen.storyboard */,
 				ADF037FB22D332AD00A69E9A /* Info.plist */,
+				1185CFA328ABC84800B4865B /* CLOCKTick_Tic tac mechanical alarm clock 2 (ID 2655)_BSB.wav */,
+				1185CFA428ABC84800B4865B /* microwave-timer-bright-design-microwave-oven-ping-timer-117077.mp3 */,
 			);
 			path = EggTimer;
 			sourceTree = "<group>";

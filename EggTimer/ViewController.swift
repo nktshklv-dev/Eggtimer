@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+
 class ViewController: UIViewController {
     
     let urlTimer = Bundle.main.url(forResource: "CLOCKTick_Tic tac mechanical alarm clock 2 (ID 2655)_BSB", withExtension: "wav")!
@@ -24,9 +25,11 @@ class ViewController: UIViewController {
     @IBAction func hardnessSelected(_ sender: UIButton) {
        
         player = try? AVAudioPlayer(contentsOf: urlTimer)
+         
         progressView.progress = 0
-        timer?.invalidate()
         timePassed = 0
+        timer?.invalidate()
+       
         
    
         let hardness = sender.currentTitle!
@@ -42,7 +45,6 @@ class ViewController: UIViewController {
             
             let percentageProgress = Float(timePassed) / Float(remainedTime)
             progressView.progress = percentageProgress
-            print("\(percentageProgress)")
             timePassed += 1
             player?.play()
             
